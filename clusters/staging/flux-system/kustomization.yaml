@@ -13,6 +13,14 @@ patches:
       name: "(kustomize-controller|helm-controller|notification-controller|image-reflector-controller|image-automation-controller)"
   - patch: |
       - op: add
+        path: /spec/template/spec/containers/0/args/1
+        value: --log-level=debug
+    target:
+      kind: Deployment
+      name: "(kustomize-controller|helm-controller|notification-controller|image-reflector-controller|image-automation-controller)"
+
+  - patch: |
+      - op: add
         path: /spec/template/spec/containers/0/args/0
         value: --default-service-account=default
     target:
